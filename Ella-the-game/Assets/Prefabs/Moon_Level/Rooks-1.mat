@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ground-2
+  m_Name: Rooks-1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ALPHATEST_ON
   m_LightmapFlags: 4
@@ -39,11 +39,11 @@ Material:
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: -0.63, y: 0}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7746f7e36fc68ec4ba0dffc89934df45, type: 3}
+        m_Texture: {fileID: 2800000, guid: cee06c456d4501c4daf6dfd287cf4fc3, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: -0.63, y: 0}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
