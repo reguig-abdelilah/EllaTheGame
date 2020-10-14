@@ -6,7 +6,7 @@ public class snowmanObstacle : MonoBehaviour {
 
     private Rigidbody2D RB;
     [SerializeField]
-    private float movemmentSpeed;
+    private float movemmentSpeed, destroyDelay=2;
 
     private int healthEffect = -5;
     private int difficulty;
@@ -43,7 +43,7 @@ public class snowmanObstacle : MonoBehaviour {
             //1st line = changing player score &&& 2nd line adding current object to a layer that is ignored by player collision
             collision.gameObject.transform.GetComponent<PlayerController>().changeHealth(healthEffect);
             gameObject.layer = LayerMask.NameToLayer("ignoredObstacles");
-            Destroy(gameObject, (float)2);
+            Destroy(gameObject, destroyDelay);
         }
     }
 }

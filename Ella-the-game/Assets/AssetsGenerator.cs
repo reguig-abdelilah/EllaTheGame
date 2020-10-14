@@ -7,6 +7,8 @@ public class AssetsGenerator : MonoBehaviour {
     public float[] itemsSpawningTimer;
     public GameObject[] items;
     public GameObject[] itemsSpawnPositions;
+    float minimumSpawnDistance = 10;
+    float lastXPos;
 	// Use this for initialization
 	void Awake () {
         GameManager.GameStartEvent += GameStartEventExecuted;  
@@ -14,7 +16,6 @@ public class AssetsGenerator : MonoBehaviour {
 
     private void GameStartEventExecuted()
     {
-        Debug.Log("whataaaaa");
         if (items != null)
         {
             Debug.Log("not null");
@@ -23,6 +24,7 @@ public class AssetsGenerator : MonoBehaviour {
                 StartCoroutine(SpawnItems(i));
             }
         }
+        lastXPos = transform.position.x;
     }
 
     // Update is called once per frame
@@ -32,9 +34,14 @@ public class AssetsGenerator : MonoBehaviour {
     {
         while (GameManager.Instance.gameState == GameManager.GameState.GameRunning)
         {
-            yield return new WaitForSeconds(itemsSpawningTimer[index]);
-            Debug.Log("hhhhhhh");
-            Instantiate(items[index], itemsSpawnPositions[index].transform.position, itemsSpawnPositions[index].transform.rotation);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(itemsSpawningTimer[index]/2, itemsSpawningTimer[index]));
+            Debug.Log(transform.position.x - lastXPos);
+            if(transform.position.x - lastXPos >= minimumSpawnDistance)
+            {
+                GameObject tmp = Instantiate(items[index], itemsSpawnPositions[index].transform.position, itemsSpawnPositions[index].transform.rotation);
+                Destroy(tmp, 30);
+                lastXPos = transform.position.x;
+            }
         }
     }
     void OnDestroy()
